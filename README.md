@@ -1,0 +1,6 @@
+- Vite
+- Vue 3 composition api
+- Typescript
+- SCSS
+- Pinia
+- FSD
