@@ -1,18 +1,10 @@
 <script setup lang="ts">
+import Home from "@/pages/home/home.vue";
+import AppHeader from "@/widgets/header/AppHeader.vue";
 </script>
 
 <template>
-<main class="main">
-  <h1>Книги в каталоге</h1>
-</main>
+  <AppHeader/>
+  <Home/>
 </template>
 
-<style lang="scss" scoped>
-h1 {
-  font-size: 3rem;
-  color: red;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-}
-</style>
