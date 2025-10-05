@@ -1,11 +1,19 @@
 <script setup lang="ts">
-defineProps<{
-  text: string;
-}>()
+defineProps({
+  text: {
+    type: String,
+    required: true
+  },
+  color: {
+    type: String,
+    default: 'var(--accent-blue-col)'
+  }
+})
 </script>
 <template>
   <button class="button"
           type="button"
+          :style="{ backgroundColor: color }"
           @click="$emit('btnClick')"
   >
     {{ text }}
@@ -23,7 +31,6 @@ defineProps<{
   color: white;
   border: none;
   padding: 0 1rem;
-  background-color: var(--accent-blue-col);
   cursor: pointer;
 
   &:hover {

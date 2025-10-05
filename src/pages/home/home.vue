@@ -29,7 +29,7 @@ import CarList from '@/widgets/carList/carList.vue';
     width: 944px;
     justify-content: center;
     align-items: center;
-    margin: 1rem 1rem 0 1rem;
+    margin: 0 1rem 0 1rem;
   }
 }
 </style>

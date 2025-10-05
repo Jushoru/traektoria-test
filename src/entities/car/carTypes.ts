@@ -1,10 +1,10 @@
 export interface ICar {
-    "id": string,
+    "id": string | number,
     "name": string,
     "model": string,
-    "year": string,
+    "year": string | number,
     "color": string,
-    "price": string,
+    "price": string | number,
     "latitude": string,
     "longitude": string
 }

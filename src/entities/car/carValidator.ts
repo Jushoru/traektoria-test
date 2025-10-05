@@ -7,9 +7,10 @@ interface outErrors {
     newErrors: Record<carFieldsType, string>;
 }
 
-export function carValidator(name: string, model: string, year: string, color: string, price: string,
+export function carValidator(name: string, model: string, year: string | number, color: string, price: string | number,
                               errors: Record<carFieldsType, string>): outErrors {
-
+    const yearStr = String(year).trim();
+    const priceStr = String(price).trim();
     let hasError = false
 
     if (!name.trim()) {
@@ -28,13 +29,13 @@ export function carValidator(name: string, model: string, year: string, color: s
         hasError = true;
     }
 
-    if (!year.trim()) {
+    if (!yearStr) {
         errors.year = 'Введите год';
         hasError = true;
-    } else if (isNaN(Number(year))) {
+    } else if (isNaN(Number(yearStr))) {
         errors.year = 'Год должен быть числом';
         hasError = true;
-    } else if (Number(year) > currentData.getFullYear() || Number(year) < 1) {
+    } else if (Number(yearStr) > currentData.getFullYear() || Number(yearStr) < 1) {
         errors.year = `Год должен быть в диапазоне от 1 до ${currentData.getFullYear()}`;
         hasError = true;
     }
@@ -47,11 +48,14 @@ export function carValidator(name: string, model: string, year: string, color: s
         hasError = true;
     }
 
-    if (!price.trim()) {
-        errors.price = 'Введите цену авто';
+    if (!priceStr) {
+        errors.price = 'Введите цену';
         hasError = true;
-    } else if (price.length > 10) {
-        errors.price = 'Слишком большая цена (макс. 10 символов)';
+    } else if (isNaN(Number(priceStr))) {
+        errors.price = 'Цена должна быть числом';
+        hasError = true;
+    } else if (Number(priceStr) > 1000000000000 || Number(priceStr) < 1) {
+        errors.price = `Цена должна быть в диапазоне от 1 до 1000000000000`;
         hasError = true;
     }
 

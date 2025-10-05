@@ -4,10 +4,12 @@
     --accent-green-col: #61D4AC;
     --error-col: #FF0000;
     --basic-gray: #8D8D8D;
+    --button-blue: #69AED8;
 
     --font-family-base: ;
     --font-size-base: 16px;
     --line-height-base: 1.5;
+
 }
 
 html {
@@ -16,6 +18,7 @@ html {
     line-height: var(--line-height-base);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
 }
 
 @font-face {

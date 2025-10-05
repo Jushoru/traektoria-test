@@ -37,7 +37,7 @@ export const useCarStore = defineStore('car' ,() => {
         }
     };
 
-    const setCar = (name: string, model: string, year: string, color: string, price: string) => {
+    const setCar = (name: string, model: string, year: string | number, color: string, price: string | number) => {
         cars.value.push({
             id: getNewID(),
             name: name,
@@ -48,6 +48,23 @@ export const useCarStore = defineStore('car' ,() => {
             latitude: '-',
             longitude: '-'
         })
+    }
+
+    const updateCar = (index: number, name: string, model: string, year: string | number, color: string, price: string | number) => {
+        if (cars.value[index]) {
+            cars.value[index] = {
+                ...cars.value[index],
+                name,
+                model,
+                year,
+                color,
+                price
+            };
+        }
+    };
+
+    const deleteCar = (index: number | null) => {
+        if (index !== null) cars.value.splice(index, 1);
     }
 
     const clearErrors = () => {
@@ -65,8 +82,8 @@ export const useCarStore = defineStore('car' ,() => {
     };
 
     const compare = (a: ICar, b: ICar, field: SortFieldType): number => {
-        if (field === 'year') return parseInt(a.year) - parseInt(b.year);
-        if (field === 'price') return parseInt(a.price) - parseInt(b.price);
+        if (field === 'year') return parseInt(a.year.toString()) - parseInt(b.year.toString());
+        if (field === 'price') return parseInt(a.price.toString()) - parseInt(b.price.toString());
         return 0;
     };
 
@@ -101,6 +118,8 @@ export const useCarStore = defineStore('car' ,() => {
 
         getCars,
         setCar,
+        updateCar,
+        deleteCar,
         clearErrors,
         setErrors,
         sortCarsByYear,
