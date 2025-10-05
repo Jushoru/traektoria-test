@@ -48,7 +48,7 @@ $desktop: 1280px;
   padding: 0;
   border: none;
 
-  min-height: 100vh;
+  min-height: 100dvh;
   min-width: 100vw;
   border-radius: 0;
 
