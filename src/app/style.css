@@ -1,6 +1,21 @@
 :root {
     --gray-col: rgba(245, 246, 246, 1);
-    --accent-col: #298BC7;
+    --accent-blue-col: #298BC7;
+    --accent-green-col: #61D4AC;
+    --error-col: #FF0000;
+    --basic-gray: #8D8D8D;
+
+    --font-family-base: ;
+    --font-size-base: 16px;
+    --line-height-base: 1.5;
+}
+
+html {
+    font-family: 'Inter', sans-serif;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @font-face {

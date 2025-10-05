@@ -14,7 +14,8 @@ defineProps<{
 <style lang="scss" scoped>
 .button {
   width: 100%;
-  height: 41px;
+  min-width: max-content;
+  min-height: 41px;
   border-radius: 0.5rem;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
@@ -22,7 +23,7 @@ defineProps<{
   color: white;
   border: none;
   padding: 0 1rem;
-  background-color: var(--accent-col);
+  background-color: var(--accent-blue-col);
   cursor: pointer;
 
   &:hover {

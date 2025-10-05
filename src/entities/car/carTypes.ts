@@ -1,10 +1,12 @@
 export interface ICar {
-    "id": number,
+    "id": string,
     "name": string,
     "model": string,
-    "year": number,
+    "year": string,
     "color": string,
-    "price": number,
-    "latitude": number,
-    "longitude": number
+    "price": string,
+    "latitude": string,
+    "longitude": string
 }
+
+export type carFieldsType = 'name' | 'model' | 'year' | 'color' | 'price';

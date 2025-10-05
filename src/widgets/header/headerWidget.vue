@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import AppButton from "@/shared/ui/AppButton.vue";
+import AppSortToggle from "@/shared/ui/AppSortToggle.vue";
 
-const showModal = () => {
-  console.log('модалочка пошла')
-}
 </script>
 
 <template>
@@ -17,8 +15,12 @@ const showModal = () => {
         <h1 class="header__title">Каталог авто</h1>
       </div>
       <div class="header__controls-row">
+        <div class="header__filter-container">
+          <AppSortToggle text="Сортировать по цене" type="price"/>
+          <AppSortToggle text="Сортировать по году" type="year"/>
+        </div>
         <div class="header__button-container">
-          <AppButton text="Добавить авто" @btn-click="showModal"/>
+          <AppButton text="Добавить авто" @btn-click="$emit('showDialog')"/>
         </div>
       </div>
     </div>
@@ -26,6 +28,8 @@ const showModal = () => {
 </template>
 
 <style scoped lang="scss">
+$mobile: 530px;
+
 .header {
   width: 100%;
   padding: 1rem 0;
@@ -34,13 +38,14 @@ const showModal = () => {
   justify-content: center;
 
   &__inner {
-    display: flex;
-    flex-direction: column;
-    width: 944px;
-    margin: 0 1rem;
-    justify-content: center;
-    align-items: center;
-  }
+     display: flex;
+     flex-direction: column;
+     width: 944px;
+
+     margin: 0 1rem;
+     justify-content: center;
+     align-items: center;
+   }
 
   &__static-row {
     width: 100%;
@@ -65,6 +70,23 @@ const showModal = () => {
     display: flex;
     width: 100%;
     justify-content: space-between;
+  }
+
+  &__filter-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    @media (max-width: #{$mobile}) {
+      flex-direction: column;
+      width: 100%;
+      gap: 0.75rem;
+    }
+
+  }
+
+  &__button-container {
+    margin-left: 0.5rem;
   }
 
 }
