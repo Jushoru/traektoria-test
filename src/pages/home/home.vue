@@ -6,6 +6,7 @@ import CarList from '@/widgets/carList/carList.vue';
 <template>
   <main class="main">
     <div class="main__inner">
+
       <CarList/>
     </div>
   </main>

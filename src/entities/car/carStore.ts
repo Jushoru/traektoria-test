@@ -10,6 +10,8 @@ const getNewID = (): string => {
 export const useCarStore = defineStore('car' ,() => {
     const cars = ref<ICar[]>([]);
     const isLoading = ref(false);
+    const hasError = ref(false);
+    const errorMessage = ref('');
     const currentSortField = ref<SortFieldType>(null);
     const currentSortDirection = ref<SortDirectionType>(null);
     const errors = ref<Record<carFieldsType, string>>({
@@ -22,18 +24,22 @@ export const useCarStore = defineStore('car' ,() => {
 
     const getCars = async () => {
         isLoading.value = true;
+        hasError.value = false; // ← Сбрасываем ошибку при новой попытке
+        errorMessage.value = '';
         try {
             const response = await fetch('https://ofc-test-01.tspb.su/test-task/vehicles');
+
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             cars.value = await response.json();
         } catch (error) {
             console.error('Failed to fetch cars:', error);
+            hasError.value = true;
+            errorMessage.value = 'Не удалось загрузить список автомобилей.';
             cars.value = [];
         } finally {
             isLoading.value = false;
-            console.log(cars)
         }
     };
 
@@ -112,6 +118,8 @@ export const useCarStore = defineStore('car' ,() => {
     return {
         cars,
         isLoading,
+        hasError,
+        errorMessage,
         currentSortField,
         currentSortDirection,
         errors,

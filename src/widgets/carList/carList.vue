@@ -31,7 +31,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <ul class="cars-list" >
+  <div v-if="carStore.isLoading" class="loading">
+    <img src="@/shared/loader.svg" alt="идёт загрузка списка авто"/>
+  </div>
+  <div v-else-if="carStore.hasError" class="error-text">
+    <p>{{ carStore.errorMessage }}</p>
+  </div>
+  <ul v-else class="cars-list" >
     <li class="cars-list__item"
         v-for="(car, index) in carStore.cars"
         :key="index"
@@ -60,6 +66,13 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+.loading,
+.error-text {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
 .cars-list {
   width: 100%;
   height: 100%;
